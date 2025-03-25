@@ -1,8 +1,11 @@
-# 🚀 PopX Account Creation Component
+# 🚀 Educase-Assignment
 
-## 📌 Project Overview
+# 🌐 Live Demo
+# Deployment Platforms
 
-PopX Account Creation is a robust React-based user registration component with comprehensive form validation, designed to provide a seamless and secure account creation experience.
+- Vercel : https://educase-assignment-oc2b.vercel.app/
+- GitHub : https://github.com/sachin0986/Educase-Assignment
+
 
 ## ✨ Features
 
