@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CreateAccount = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     phoneNumber: '',
@@ -24,21 +26,21 @@ const CreateAccount = () => {
     const newErrors = {};
 
     // Check required fields
-    if (!formData.fullName) {
+    if (!formData.fullName.trim()) {
       newErrors.fullName = 'Full Name is required';
     }
 
-    if (!formData.phoneNumber) {
+    if (!formData.phoneNumber.trim()) {
       newErrors.phoneNumber = 'Phone Number is required';
     }
 
-    if (!formData.email) {
+    if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Email is invalid';
     }
 
-    if (!formData.password) {
+    if (!formData.password.trim()) {
       newErrors.password = 'Password is required';
     } else if (formData.password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters';
@@ -55,11 +57,8 @@ const CreateAccount = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Form is valid, proceed with submission
-      alert('Account created successfully!');
-    } else {
-      // Form is invalid
-      alert('Please fill all required fields correctly');
+      // Navigate to the next page only if all validations pass
+      navigate('/account-settings');
     }
   };
 
@@ -159,14 +158,12 @@ const CreateAccount = () => {
           {errors.isAgency && <p className="text-red-500 text-sm mt-1">{errors.isAgency}</p>}
         </div>
 
-
         <button 
           type="submit"
           className="mt-6 w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition"
         >
           Create Account
         </button>
-
       </form>
     </div>
   );
